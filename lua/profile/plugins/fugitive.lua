@@ -1,9 +1,9 @@
 return {
     "tpope/vim-fugitive",
     config = function()
-        vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+        vim.keymap.set("n", "<leader>gj", vim.cmd.Git)
 
-        local ThePrimeagen_Fugitive = vim.api.nvim_create_augroup("ThePrimeagen_Fugitive", {})
+        local ThePrimeagen_Fugitive = vim.api.nvim_create_augroup("lisenhatson_Fugitive", {})
 
         local autocmd = vim.api.nvim_create_autocmd
         autocmd("BufWinEnter", {
@@ -16,7 +16,7 @@ return {
 
                 local bufnr = vim.api.nvim_get_current_buf()
                 local opts = {buffer = bufnr, remap = false}
-                vim.keymap.set("n", "<leader>p", function()
+                vim.keymap.set("n", "<leader>gs", function()
                     vim.cmd.Git('push')
                 end, opts)
 
