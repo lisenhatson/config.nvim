@@ -1,71 +1,23 @@
 return {
-    "nvimdev/dashboard-nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    event = 'VimEnter',
+    "goolord/alpha-nvim",
+    event = "VimEnter",
     config = function()
-        local dashboard = require("dashboard")
-        dashboard.setup({
-            theme = "doom",
-            config = {
-                header = {
-[[]],
+        local alpha = require("alpha")
+        local dashboard = require("alpha.themes.dashboard")
 
+        dashboard.section.header.val = { " Neovim " }
 
-[[ ▒▒▒▒▒▒▒▒▒▒░▒▒▒▒▒░░▒▒▒▒░▒░░▒▒▒▒▒▒░░▒▒▒▒▒▒░▒▒▒▒▒▒░▒]],
-[[ ▒▒▒▒▒▒░▒▒▒░▒▒▒▒▒░░▒▒▒▒░▒▒░▒▒▒▒▒▒░░▒▒▒▒▒▒░░▒▒▒▒▒░▒]],
-[[ ▒▒▒▒▒▒░▒▒░░▒▒▒▒░░░▒▒▒░░▒▒░▒▒▒▒▒▒▒░▒▒▒▒▒▒▒░▒░▒▒▒░░]],
-[[ ▒▒▒▒▒▒░▒▒░░▒▒▒░░▒▒▒▒▒░▒▒▒░▒▒▒▒▒░░░░▒▒▒▒▒▒░▒░▒▒▒░░]],
-[[ ▒▒░░▒▒░▒▒░░▒▒▒░░▒▒▒▒▒░▒▒▓▒▒▒▒▒▒▒░    ░░░░░░░▒▒▒░░]],
-[[ ▒▒░▒▒▒░▒▒░░▒▒░░▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓░ ▒▒░    ░  ░░░▒░░]],
-[[ ▒▒░▒▒▒░▒▒░░░     ░▓█████████████░░░ ░░░░▒▓▒  ░░░░]],
-[[ ▒▒░░▒▒░░░ ░▒░   ░░██████████████▓░▒▒▒▒▒░▓█▓▒░░░░░]],
-[[ ▒▒░░░░  ░▒ ░░░░▒░░███████████████████▓██████▒▒▒▒▒]],
-[[ ░░░░░░░░▓▓▓░░▒▒▓▓██████████████████▓███████▓░▒▒▒▒]],
-[[ ░░░▒░▒▓▓▓█▓▓▓██████████████████████████████▓▒▒▒▒▒]],
-[[ ▒▒░▒░▒▓██▓█▓▓██████████████▓▓▓▓████████████▒▒▒▒▒▒]],
-[[ ▒▒▒░▒▓▒▒▓██████████████▓░░▒▓▓▓▓▓██████████▓░▒▒▒▒▒]],
-[[ ▒░▒░░▒▓▓▒▓██████████████░▓▓▓▓▓▓▓█████████▓░▒▒▒▒▒▒]],
-[[ ▒░▒░░░░▒▒▒▒█████████████▓▓▓▓▓▓▓▓███████▓░░░▒▒▒▒▒▒]],
-[[ ▒░▒░░░░░░░░░▓▓████████████▓▓▓███████▓▒░░░░░▒▒▒▒▒▒]],
-[[ ▒░▒░░░░░░░░░░░░▒▒▓▓▓██████████████▓▓▒░░░░░▒▒▒▒▒▒▒]],
-[[ ▒░░░░░░░░░░░░░░░░░░░░▒▒▓▓▓▓███▓▓▓▒▓▓░░░░░░▒▒▒▒▒▒░]],
-[[ ▒▒░░▒░░░░░░░░░░░░░░░▓▓▒▓▓▓▓▒▓▒▒▓▓▓▓▒░░░░░░▒░▒▒░▒░]],
-[[ ░▒░░▒░░░░░░░░░░░░░░▓▓▓▓▓▒▓▓▓▓▓▓▒▒▓▓▓▓░░░░▒▒░▒▒▒░░]],
+        dashboard.section.buttons.val = {
+            dashboard.button("e", "New file", ":ene | startinsert<CR>"),
+            dashboard.button("n", "Netrw", ":Ex .<CR>"),
+            dashboard.button("f", "Find file", ":Telescope find_files<CR>"),
+            dashboard.button("r", "Recent", ":Telescope oldfiles<CR>"),
+            dashboard.button("u", "Update", ":checkhealth | Lazy update | MasonUpdate<CR>"),
+            dashboard.button("q", "Quit", ":qa<CR>"),
+        }
 
+        dashboard.section.footer.val = { "" }
 
-
-[[]],
-                },
-                center = {
-                    {
-                        icon_hl = "Title",
-                        desc = "New File",
-                        desc_hl = "String",
-                        key = "e",
-                        key_hl = "Number",
-                        action = "ene | startinsert",
-                    },
-                    {
-                        icon_hl = "Title",
-                        desc = "Netrw",
-                        desc_hl = "String",
-                        key = "n",
-                        key_hl = "Number",
-                        action = "Ex .",
-                    },
-                    {
-                        icon_hl = "Title",
-                        desc = "Update",
-                        desc_hl = "String",
-                        key = "u",
-                        key_hl = "Number",
-                        action = "checkhealth | Lazy update | MasonUpdate",
-                    },
-                },
-                footer = {
-                    "Nipaah!",
-                },
-            },
-        })
+        alpha.setup(dashboard.opts)
     end,
 }

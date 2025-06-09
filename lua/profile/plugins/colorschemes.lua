@@ -1,7 +1,7 @@
 -- This is Primeagen's ColorMyPencils + TJ's colorschemes
 --
 function SetColor(color)
-	color = color or "kanagawa"
+	color = color or "everblush"
 	vim.cmd.colorscheme(color)
     -- Transparency
     -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -24,6 +24,8 @@ return {
     "embark-theme/vim",
     "Shatur/neovim-ayu",
     "ellisonleao/gruvbox.nvim",
+    "sainnhe/sonokai",
+    "Everblush/nvim",
     "https://gitlab.com/bartekjaszczak/finale-nvim",
     { "rose-pine/neovim", name = "rose-pine" },
     { "catppuccin/nvim", name = "catppuccin" },
