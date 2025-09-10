@@ -65,7 +65,6 @@ vim.schedule(function()
     SetColor()
 end)
 
-
 autocmd('LspAttach', {
     group = profileGroup,
     callback = function(e)
